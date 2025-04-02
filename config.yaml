@@ -1,0 +1,28 @@
+gpu_id: 0
+
+dataset_path: dataset.hdf5
+
+prediction_mode: "kspace" # useless config right here
+
+encoder:
+  encoding_mode: "fourier" # only “fourier” !!!
+  in_features: 2
+  out_features: 512
+  coordinate_scales: [1.0, 1.0]
+  b_scale: 10 #  do not change
+
+mlp:
+  mlp_hidden_features: 512
+  mlp_hidden_layers: 6
+  omega_0: 25
+  activation: "sine" # "sine" "relu"
+
+learning_rate: 1e-4
+epochs: 20000
+save_interval: 100
+
+supervision_mode: "kspace_csm"   # only "kspace_csm"!
+
+use_penalty: True
+use_tv: True
+lambda_tv: 1e-5
